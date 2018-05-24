@@ -34,18 +34,23 @@ class ViewController: UIViewController {
        updateDiceImages()
     }
     
+    
+    //MARK: Update Dice Image
     func updateDiceImages(){
+        //MARK: Random Number
         randomDiceIdx1 = Int(arc4random_uniform(6))
         randomDiceIdx2 = Int(arc4random_uniform(6))
         
         diceImageView1.image = UIImage(named: diceArray[randomDiceIdx1])
         diceImageView2.image = UIImage(named: diceArray[randomDiceIdx2])
+        //MARK: Vibration
         if(randomDiceIdx1 == randomDiceIdx2){
               AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         }
        
     }
     
+    //MARK: Shake Motion
     override func motionEnded(_ motion: UIEventSubtype, with event: UIEvent?) {
         updateDiceImages()
         
